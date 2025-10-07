@@ -16,14 +16,14 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-start justify-center px-4 sm:px-6 lg:px-8 overflow-hidden pt-20 md:pt-24">
+    <section className="relative min-h-screen flex items-start justify-center px-4 sm:px-6 lg:px-8 overflow-hidden pt-32 md:pt-40">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full flex items-center justify-center min-h-[calc(100vh-5rem)] md:min-h-[calc(100vh-6rem)]">
+      <div className="relative z-10 max-w-6xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left Content */}
           <motion.div
@@ -112,7 +112,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="pt-16 text-center"
+          className="pt-12 text-center"
         >
           <motion.a
             href="#about"
