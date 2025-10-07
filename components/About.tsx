@@ -54,9 +54,9 @@ const About = () => {
                 </span>{" "}
                 who started building{" "}
                 <span className="text-primary-400 font-semibold">dApps</span>{" "}
-                with a blockchain startup for over a year. {/* eslint-disable-next-line react/no-unescaped-entities */}
-                I&apos;ve learned to
-                combine{" "}
+                with a blockchain startup for over a year.{" "}
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
+                I&apos;ve learned to combine{" "}
                 <span className="text-accent-400 font-semibold">
                   frontend creativity
                 </span>{" "}
@@ -73,9 +73,9 @@ const About = () => {
                   startup environment
                 </span>{" "}
                 accelerated my growth more than any classroom or online course
-                could; at Andromeda, {/* eslint-disable-next-line react/no-unescaped-entities */}
-                I wasn&apos;t given small isolated tasks. I was
-                given{" "}
+                could; at Andromeda,{" "}
+                {/* eslint-disable-next-line react/no-unescaped-entities */}I
+                wasn&apos;t given small isolated tasks. I was given{" "}
                 <span className="text-primary-400 font-semibold">
                   full responsibility
                 </span>{" "}
