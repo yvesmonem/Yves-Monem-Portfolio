@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Yves Monem – Blockchain Frontend Developer",
+  title: "Yves Monem Portfolio",
   description:
     "Building user-friendly decentralized applications that merge creativity and logic. Web3 Frontend Developer specializing in React, Next.js, TypeScript, and Ethereum dApps.",
   keywords: [
@@ -23,6 +23,11 @@ export const metadata: Metadata = {
     "dApps",
   ],
   authors: [{ name: "Yves Monem" }],
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "Yves Monem – Blockchain Frontend Developer",
     description:
