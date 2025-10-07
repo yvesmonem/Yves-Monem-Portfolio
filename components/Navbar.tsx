@@ -105,16 +105,16 @@ const Navbar = () => {
       >
         <motion.div
           variants={{
-            open: { 
-              opacity: 1, 
+            open: {
+              opacity: 1,
               height: "auto",
-              transition: { duration: 0.3, ease: "easeInOut" }
+              transition: { duration: 0.3, ease: "easeInOut" },
             },
-            closed: { 
-              opacity: 0, 
+            closed: {
+              opacity: 0,
               height: 0,
-              transition: { duration: 0.3, ease: "easeInOut" }
-            }
+              transition: { duration: 0.3, ease: "easeInOut" },
+            },
           }}
           className="bg-gray-950/98 backdrop-blur-lg border-b border-gray-800/50"
         >
@@ -126,11 +126,15 @@ const Navbar = () => {
                 onClick={(e) => handleClick(e, link.href)}
                 className="block text-gray-300 hover:text-accent-400 transition-colors duration-200 font-medium text-lg py-3 px-2 rounded-lg hover:bg-gray-800/30"
                 initial={{ opacity: 0, x: -20 }}
-                animate={isMobileMenuOpen ? { 
-                  opacity: 1, 
-                  x: 0,
-                  transition: { delay: index * 0.1, duration: 0.3 }
-                } : { opacity: 0, x: -20 }}
+                animate={
+                  isMobileMenuOpen
+                    ? {
+                        opacity: 1,
+                        x: 0,
+                        transition: { delay: index * 0.1, duration: 0.3 },
+                      }
+                    : { opacity: 0, x: -20 }
+                }
                 whileHover={{ x: 5 }}
                 whileTap={{ scale: 0.98 }}
               >
