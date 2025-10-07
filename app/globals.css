@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+  }
+
+  * {
+    @apply border-gray-800;
+  }
+
+  body {
+    @apply bg-gray-950 text-gray-100;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500;
+  }
+
+  .glow-border {
+    @apply border border-accent-500/30 shadow-[0_0_15px_rgba(168,85,247,0.3)];
+  }
+
+  .glow-border-hover {
+    @apply hover:border-accent-400/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] transition-all duration-300;
+  }
+}
