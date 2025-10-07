@@ -47,13 +47,15 @@ const About = () => {
           >
             <p className="text-gray-300 text-lg md:text-xl leading-relaxed space-y-6">
               <span className="block">
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
                 I&apos;m a{" "}
                 <span className="text-accent-400 font-semibold">
                   Web3 Frontend Developer
                 </span>{" "}
                 who started building{" "}
                 <span className="text-primary-400 font-semibold">dApps</span>{" "}
-                with a blockchain startup for over a year. I&apos;ve learned to
+                with a blockchain startup for over a year. {/* eslint-disable-next-line react/no-unescaped-entities */}
+                I&apos;ve learned to
                 combine{" "}
                 <span className="text-accent-400 font-semibold">
                   frontend creativity
@@ -71,7 +73,8 @@ const About = () => {
                   startup environment
                 </span>{" "}
                 accelerated my growth more than any classroom or online course
-                could; at Andromeda, I wasn&apos;t given small isolated tasks. I was
+                could; at Andromeda, {/* eslint-disable-next-line react/no-unescaped-entities */}
+                I wasn&apos;t given small isolated tasks. I was
                 given{" "}
                 <span className="text-primary-400 font-semibold">
                   full responsibility
