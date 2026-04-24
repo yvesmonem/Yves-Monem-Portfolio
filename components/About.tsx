@@ -1,125 +1,113 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 
-const About = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+const stats = [
+  { value: '1+', label: 'Year at Andromeda' },
+  { value: 'Web3', label: 'Specialization' },
+  { value: 'Full', label: 'Stack Coverage' },
+  { value: 'CS', label: 'Degree' },
+]
+
+export default function About() {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section
-      id="about"
-      className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gray-900/30"
-    >
-      <div className="max-w-5xl mx-auto">
+    <section id="about" ref={ref} className="py-24 md:py-36 px-6">
+      <div className="max-w-6xl mx-auto">
+        {/* Section label */}
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-3 mb-14"
         >
-          {/* Section Title */}
-          <div className="text-center mb-12 md:mb-16">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold text-gradient mb-4"
-            >
-              About Me
-            </motion.h2>
-            <motion.div
-              initial={{ width: 0 }}
-              animate={isInView ? { width: "100px" } : { width: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full"
-            />
-          </div>
+          <span className="text-[11px] font-mono tracking-[0.2em] text-zinc-600 uppercase">
+            01 — About
+          </span>
+          <div className="flex-1 h-[1px] bg-white/[0.05]" />
+        </motion.div>
 
-          {/* Biography */}
+        <div className="grid lg:grid-cols-[1fr,1.5fr] gap-14 lg:gap-20 items-start">
+          {/* Left: heading + stats */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 md:p-12 glow-border-hover"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <p className="text-gray-300 text-lg md:text-xl leading-relaxed space-y-6">
-              <span className="block">
-                {/* eslint-disable-next-line react/no-unescaped-entities */}
-                I&apos;m a{" "}
-                <span className="text-accent-400 font-semibold">
-                  Web3 Frontend Developer
-                </span>{" "}
-                who started building{" "}
-                <span className="text-primary-400 font-semibold">dApps</span>{" "}
-                with a blockchain startup for over a year.{" "}
-                {/* eslint-disable-next-line react/no-unescaped-entities */}
-                I&apos;ve learned to combine{" "}
-                <span className="text-accent-400 font-semibold">
-                  frontend creativity
-                </span>{" "}
-                with{" "}
-                <span className="text-primary-400 font-semibold">
-                  backend logic
-                </span>
-                .
-              </span>
+            <h2 className="font-syne font-bold text-3xl md:text-4xl text-zinc-100 mb-8 leading-tight">
+              Developer who
+              <br />
+              <span className="text-zinc-500">ships real things</span>
+            </h2>
 
-              <span className="block">
-                Working in a{" "}
-                <span className="text-accent-400 font-semibold">
-                  startup environment
-                </span>{" "}
-                accelerated my growth more than any classroom or online course
-                could; at Andromeda,{" "}
-                {/* eslint-disable-next-line react/no-unescaped-entities */}I
-                wasn&apos;t given small isolated tasks. I was given{" "}
-                <span className="text-primary-400 font-semibold">
-                  full responsibility
-                </span>{" "}
-                over real products that people would actually use.
-              </span>
+            <div className="grid grid-cols-2 gap-3">
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.07 }}
+                  className="p-4 bg-zinc-900/50 border border-white/[0.05] rounded-xl"
+                >
+                  <div className="text-2xl font-syne font-bold text-emerald-400 mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-zinc-600">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
-              <span className="block">
-                The{" "}
-                <span className="text-accent-400 font-semibold">fast pace</span>{" "}
-                forced me to learn quickly, think independently, and write{" "}
-                <span className="text-primary-400 font-semibold">
-                  production-level code
-                </span>
-                . There was no room for quick hacks or relying on someone else
-                to fix things later. If something broke, I had to figure it out.
-                If something was unclear, I had to research and decide. If
-                something could be better, I was expected to improve it without
-                waiting for instructions.
+          {/* Right: bio */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="space-y-5 text-zinc-400 leading-relaxed text-[0.975rem]"
+          >
+            <p>
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              I&apos;m a{' '}
+              <span className="text-zinc-200 font-medium">
+                Web3 frontend developer
+              </span>{' '}
+              who spent over a year building dApps at{' '}
+              <span className="text-emerald-400 font-medium">
+                Andromeda Protocol
+              </span>{' '}
+              — a blockchain startup on the Cosmos ecosystem. I wasn&apos;t
+              given small isolated tasks; I had full ownership over real products
+              that people used.
+            </p>
+            <p>
+              The startup environment forced me to learn fast, think
+              independently, and write{' '}
+              <span className="text-zinc-200 font-medium">
+                production-level code
+              </span>{' '}
+              without a safety net. If something broke, I figured it out. If
+              something could be better, I improved it without waiting for
+              instructions.
+            </p>
+            <p>
+              Beyond Web3, I have a strong computer science foundation — I work
+              across the full stack with{' '}
+              <span className="text-zinc-200 font-medium">
+                React, TypeScript, and Spring Boot
               </span>
-
-              <span className="block">
-                More than just coding, I learned{" "}
-                <span className="text-accent-400 font-semibold">ownership</span>
-                ,{" "}
-                <span className="text-primary-400 font-semibold">
-                  problem-solving under pressure
-                </span>
-                , and how to build features that work in{" "}
-                <span className="text-accent-400 font-semibold">
-                  real-world environments
-                </span>
-                , not just in theory. That experience turned me from a learner
-                into a{" "}
-                <span className="text-gradient font-bold">
-                  developer who can deliver
-                </span>
-                .
-              </span>
+              , and have explored machine learning and real-time systems through
+              my CS degree.
+            </p>
+            <p className="text-zinc-500 text-sm border-l-2 border-emerald-400/30 pl-4 italic">
+              That experience turned me from a learner into a developer who can
+              deliver — and that&apos;s what I bring to every project.
             </p>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
-  );
-};
-
-export default About;
+  )
+}

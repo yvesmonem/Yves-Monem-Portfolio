@@ -1,138 +1,167 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowDown, Cpu } from "lucide-react";
-import ProfileAvatar from "./ProfileAvatar";
+import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react'
 
-const Hero = () => {
-  const socialLinks = [
-    { icon: Github, href: "https://github.com/yvesmonem", label: "GitHub" },
-    {
-      icon: Linkedin,
-      href: "https://www.linkedin.com/in/yves-monem-140407271/",
-      label: "LinkedIn",
-    },
-    { icon: Mail, href: "mailto:yves_menhem@outlook.com", label: "Email" },
-  ];
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+}
 
+const line = {
+  hidden: { opacity: 0, y: 18 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
+const socials = [
+  { icon: Github, href: 'https://github.com/yvesmonem', label: 'GitHub' },
+  {
+    icon: Linkedin,
+    href: 'https://www.linkedin.com/in/yves-monem-140407271/',
+    label: 'LinkedIn',
+  },
+  { icon: Mail, href: 'mailto:yves_menhem@outlook.com', label: 'Email' },
+]
+
+export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-start justify-center px-4 sm:px-6 lg:px-8 overflow-hidden pt-32 md:pt-40">
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-      </div>
+    <section className="relative min-h-screen flex flex-col justify-center px-6 max-w-6xl mx-auto pt-20 pb-24">
+      {/* Ambient glows */}
+      <div className="absolute -top-10 left-[10%] w-[520px] h-[520px] bg-emerald-500/[0.03] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[45%] right-[5%] w-[400px] h-[400px] bg-sky-500/[0.025] rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center lg:text-left space-y-6 md:space-y-8"
+      <div className="grid lg:grid-cols-[1fr,320px] xl:grid-cols-[1fr,360px] gap-16 xl:gap-24 items-center">
+        {/* ── Left column ── */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="space-y-6"
+        >
+          {/* Availability badge */}
+          <motion.div variants={line}>
+            <span className="inline-flex items-center gap-2 text-[11px] font-mono tracking-wider text-zinc-500 border border-white/[0.07] rounded-full px-3 py-1.5 uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Available for opportunities
+            </span>
+          </motion.div>
+
+          {/* Name */}
+          <motion.h1
+            variants={line}
+            className="font-syne font-bold text-zinc-100 leading-[0.9] tracking-tight"
+            style={{ fontSize: 'clamp(3.2rem, 7vw, 6rem)' }}
           >
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-5xl sm:text-6xl md:text-7xl font-bold"
-            >
-              <span className="text-gray-100">Yves Monem</span>
-            </motion.h1>
+            Yves
+            <br />
+            Monem
+          </motion.h1>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="flex items-center gap-3 justify-center lg:justify-start"
+          {/* Role */}
+          <motion.p
+            variants={line}
+            className="text-lg text-zinc-400 font-medium"
+          >
+            Full Stack &amp; Web3 Developer
+          </motion.p>
+
+          {/* Description */}
+          <motion.p
+            variants={line}
+            className="text-zinc-500 leading-relaxed max-w-[480px] text-[0.975rem]"
+          >
+            CS graduate who spent a year building real products at a blockchain
+            startup. I write production-level code across the full stack — from
+            smart contracts to the interfaces people actually use.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div variants={line} className="flex flex-wrap gap-3 pt-1">
+            <a
+              href="#projects"
+              className="px-5 py-2.5 rounded-full bg-emerald-400 text-zinc-900 text-sm font-semibold hover:bg-emerald-300 active:scale-[0.98] transition-all duration-150"
             >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                className="w-8 h-8 rounded-full bg-gradient-to-r from-accent-500 to-primary-500 flex items-center justify-center"
+              View my work
+            </a>
+            <a
+              href="#contact"
+              className="px-5 py-2.5 rounded-full border border-white/[0.10] text-zinc-400 text-sm font-medium hover:border-white/[0.20] hover:text-zinc-200 active:scale-[0.98] transition-all duration-150"
+            >
+              Get in touch
+            </a>
+          </motion.div>
+
+          {/* Socials */}
+          <motion.div variants={line} className="flex items-center gap-3 pt-1">
+            {socials.map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={
+                  href.startsWith('http') ? 'noopener noreferrer' : undefined
+                }
+                aria-label={label}
+                className="w-8 h-8 flex items-center justify-center rounded-lg border border-white/[0.08] text-zinc-600 hover:text-zinc-300 hover:border-white/[0.14] transition-all duration-200"
               >
-                <Cpu className="w-4 h-4 text-white" />
-              </motion.div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gradient">
-                Blockchain Frontend Developer
-              </h2>
-            </motion.div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-2xl leading-relaxed"
-            >
-              Building user-friendly decentralized applications that merge
-              creativity and logic.
-            </motion.p>
+                <Icon size={15} />
+              </a>
+            ))}
+            <div className="w-10 h-[1px] bg-white/[0.07] ml-1" />
+            <span className="text-[11px] font-mono text-zinc-700 hidden sm:block">
+              yves_menhem@outlook.com
+            </span>
           </motion.div>
-
-          {/* Right Content - AI Avatar */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative flex justify-center lg:justify-end"
-          >
-            <ProfileAvatar />
-          </motion.div>
-        </div>
-
-        {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="flex items-center justify-center gap-6 pt-12"
-        >
-          {socialLinks.map((social, index) => (
-            <motion.a
-              key={social.label}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full border border-gray-700 bg-gray-900/50 hover:border-accent-500 hover:bg-accent-500/10 transition-all duration-300 group"
-              whileHover={{ scale: 1.1, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1 + index * 0.1 }}
-              aria-label={social.label}
-            >
-              <social.icon className="w-6 h-6 text-gray-400 group-hover:text-accent-400 transition-colors" />
-            </motion.a>
-          ))}
         </motion.div>
 
-        {/* Scroll Indicator */}
+        {/* ── Right column: Photo ── */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="pt-12 text-center"
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="hidden lg:block"
         >
-          <motion.a
-            href="#about"
-            onClick={(e) => {
-              e.preventDefault();
-              document
-                .querySelector("#about")
-                ?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="inline-flex flex-col items-center gap-2 text-gray-400 hover:text-accent-400 transition-colors cursor-pointer"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-          >
-            <span className="text-sm">Scroll to explore</span>
-            <ArrowDown className="w-5 h-5" />
-          </motion.a>
+          <div className="relative">
+            {/* Subtle glow */}
+            <div className="absolute inset-0 rounded-3xl bg-emerald-400/[0.04] blur-3xl scale-[1.15]" />
+            {/* Photo frame */}
+            <div className="relative rounded-3xl overflow-hidden border border-white/[0.07] aspect-[3/4]">
+              <Image
+                src="/graduation-photo.jpg"
+                alt="Yves Monem"
+                fill
+                priority
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 0px, 360px"
+              />
+              {/* Gradient fade at bottom */}
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-zinc-950/70 to-transparent" />
+            </div>
+          </div>
         </motion.div>
       </div>
-    </section>
-  );
-};
 
-export default Hero;
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.3, duration: 0.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <motion.a
+          href="#about"
+          animate={{ y: [0, 5, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-1.5 text-zinc-700 hover:text-zinc-500 transition-colors"
+        >
+          <ArrowDown size={14} />
+        </motion.a>
+      </motion.div>
+    </section>
+  )
+}

@@ -3,34 +3,72 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-  }
-
-  * {
-    @apply border-gray-800;
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply bg-gray-950 text-gray-100;
+    @apply bg-zinc-950 text-zinc-100;
   }
 
-  html {
-    scroll-behavior: smooth;
+  /* Hide default cursor on desktop where custom cursor is active */
+  @media (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #09090b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+  }
+
+  ::selection {
+    background-color: rgba(74, 222, 128, 0.15);
+    color: #f4f4f5;
   }
 }
 
+/* Subtle noise texture overlay for premium feel */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
 @layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500;
+  .font-syne {
+    font-family: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
   }
 
-  .glow-border {
-    @apply border border-accent-500/30 shadow-[0_0_15px_rgba(168,85,247,0.3)];
+  /* Section label pattern: "01 — About" */
+  .section-label {
+    @apply text-[11px] font-mono tracking-[0.2em] text-zinc-600 uppercase;
   }
 
-  .glow-border-hover {
-    @apply hover:border-accent-400/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] transition-all duration-300;
+  /* Reusable card glass */
+  .card-glass {
+    @apply bg-zinc-900/50 border border-white/[0.06] backdrop-blur-sm rounded-2xl;
+  }
+
+  .card-glass-hover {
+    @apply transition-all duration-300 hover:bg-zinc-900/70 hover:border-white/[0.10];
   }
 }
